@@ -9,8 +9,7 @@ body{
 
 #container{
     width: 100vw;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 20px;
 }
 
@@ -27,11 +26,6 @@ body{
     padding: 0;
     margin: 0;
     font-size: 3rem;
-}
-
-#content{
-    display: grid;
-    
 }
 
 #add-div{
@@ -52,6 +46,22 @@ body{
 }
 
 #contents{
-    background-color: lightgray;
     display: grid;
+    gap: 10px;
+    justify-content: center;
+}
+
+.book-card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: lightgrey;
+    width: fit-content;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }

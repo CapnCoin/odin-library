@@ -1,10 +1,8 @@
 const MyLibrary = [];
-const Contents = document.getElementById('contents');
+let Contents = document.getElementById('contents');
 
 function clear_contents(){
-    while(Contents.firstChild){
-        Contents.removeChild(firstChild);
-    }
+    Contents.replaceChildren();
 }
 
 function add_contents(){
@@ -13,7 +11,7 @@ function add_contents(){
         let new_book = document.createElement('div');
         //assign id and class
         new_book.id = `${MyLibrary[i].id}`;
-        new_book.classList.add('book_card');
+        new_book.classList.add('book-card');
         //add title element
         let title = document.createElement('div');
         title.textContent = `Title: ${MyLibrary[i].title}`;
@@ -27,10 +25,11 @@ function add_contents(){
         author.textContent = `number of pages: ${MyLibrary[i].n_pages}`;
         new_book.appendChild(n_pages);
         //add have read
-        let have_read = document.createElement('div');
-        if(MyLibrary[i].have_read) have_read.textContent = 'You have read this book';
-        else have_read.textContent = 'You have not read this book';
-        new_book.appendChild(have_read);
+        let have_read_checkbox = document.createElement('input');
+        have_read_checkbox.type = 'checkbox';
+        if(MyLibrary[i].have_read) have_read_checkbox.checked = true;
+        else have_read_checkbox.checked = false;
+        new_book.appendChild(have_read_checkbox);
 
         Contents.appendChild(new_book);
     }
@@ -59,6 +58,7 @@ function Book(title, author, n_pages, have_read){
 function add_book(title, author, n_pages, have_read){
     let book_to_add = new Book(title, author, n_pages, have_read);
     MyLibrary.push(book_to_add);
+    refresh_contents();
 }
 
 add_book('test', 'test', 20, true);
