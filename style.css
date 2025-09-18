@@ -1,0 +1,57 @@
+:root{
+
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#header{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+}
+
+#header>H1{
+    padding: 0;
+    margin: 0;
+    font-size: 3rem;
+}
+
+#content{
+    display: grid;
+    
+}
+
+#add-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    height: 5vh;
+    width: 20vw;
+    border-width: 0;
+    border-radius: 20px;
+    background-color: lightblue;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#contents{
+    background-color: lightgray;
+    display: grid;
+}
