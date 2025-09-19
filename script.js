@@ -9,28 +9,48 @@ function add_contents(){
     for(let i = 0; i < MyLibrary.length; i++){
         //create card
         let new_book = document.createElement('div');
-        //assign id and class
-        new_book.id = `${MyLibrary[i].id}`;
+
+        //assign and class
         new_book.classList.add('book-card');
+
         //add title element
         let title = document.createElement('div');
         title.textContent = `Title: ${MyLibrary[i].title}`;
         new_book.appendChild(title);
+
         //add author element
         let author = document.createElement('div');
         author.textContent = `Author: ${MyLibrary[i].author}`;
         new_book.appendChild(author);
+
         //add page count
         let n_pages = document.createElement('div');
-        author.textContent = `number of pages: ${MyLibrary[i].n_pages}`;
+        n_pages.textContent = `number of pages: ${MyLibrary[i].n_pages}`;
         new_book.appendChild(n_pages);
+
         //add have read
+        let have_read_div = document.createElement('div');
+        have_read_div.id = 'have-read';
+
+        let have_read_text = document.createElement('div');
+        have_read_text.textContent = 'Have read'
+        have_read_div.appendChild(have_read_text);
+
         let have_read_checkbox = document.createElement('input');
         have_read_checkbox.type = 'checkbox';
         if(MyLibrary[i].have_read) have_read_checkbox.checked = true;
         else have_read_checkbox.checked = false;
-        new_book.appendChild(have_read_checkbox);
+        have_read_div.appendChild(have_read_checkbox);
 
+        new_book.appendChild(have_read_div);
+
+        //add remove button
+        let remove_button = document.createElement('button');
+        remove_button.textContent = 'Remove';
+        remove_button.classList.add('button');
+        new_book.appendChild(remove_button);
+
+        //add book card to contents
         Contents.appendChild(new_book);
     }
 }
@@ -61,6 +81,6 @@ function add_book(title, author, n_pages, have_read){
     refresh_contents();
 }
 
-add_book('test', 'test', 20, true);
-add_book('test', 'test', 20, false);
-add_book('test', 'test', 20, true);
+add_book('title1', 'author1', 20, true);
+add_book('title2', 'author2', 20, false);
+add_book('title3', 'author3', 20, true);
