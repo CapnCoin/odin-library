@@ -48,7 +48,7 @@ function add_contents(){
         //add remove button
         let remove_button = document.createElement('button');
         remove_button.textContent = 'Remove';
-        remove_button.classList.add('button');
+        remove_button.classList.add('button', 'remove-button');
         new_book.appendChild(remove_button);
 
         //add book card to contents
@@ -87,13 +87,20 @@ Contents.addEventListener('change', (event) => {
     if(event.target.classList.contains('have-read-checkbox')){
         const checkbox = event.target;
         if(checkbox.checked){
-            console.log('checked');
+            //update object variable
         }
         else{
-            console.log('unchecked');
+            //update object variable
         }
     }
 });
+
+Contents.addEventListener('click', (event) => {
+    if(event.target.classList.contains('remove-button')){
+        //remove target (somehow by using the id)
+        //refresh contents
+    }
+})
 
 add_book('title1', 'author1', 20, true);
 add_book('title2', 'author2', 20, false);
