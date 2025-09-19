@@ -37,6 +37,7 @@ function add_contents(){
         have_read_div.appendChild(have_read_text);
 
         let have_read_checkbox = document.createElement('input');
+        have_read_checkbox.classList.add('have-read-checkbox');
         have_read_checkbox.type = 'checkbox';
         if(MyLibrary[i].have_read) have_read_checkbox.checked = true;
         else have_read_checkbox.checked = false;
@@ -80,6 +81,19 @@ function add_book(title, author, n_pages, have_read){
     MyLibrary.push(book_to_add);
     refresh_contents();
 }
+
+//event listeners
+Contents.addEventListener('change', (event) => {
+    if(event.target.classList.contains('have-read-checkbox')){
+        const checkbox = event.target;
+        if(checkbox.checked){
+            console.log('checked');
+        }
+        else{
+            console.log('unchecked');
+        }
+    }
+});
 
 add_book('title1', 'author1', 20, true);
 add_book('title2', 'author2', 20, false);
