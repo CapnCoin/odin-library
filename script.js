@@ -101,8 +101,20 @@ Contents.addEventListener('change', (event) => {
 //remove book (book card) button
 Contents.addEventListener('click', (event) => {
     if(event.target.classList.contains('remove-button')){
-        //remove target (somehow by using the id)
+        //remove target (somehow by using data id)
+        const book_card = event.target.closest('.book-card');
+        //if book card was found
+        if(book_card){
+            //get id
+            const book_id = book_card.dataset.id;
+            for(let i = 0; i < MyLibrary.length; i++){
+                if(book_id === MyLibrary[i].id){
+                    MyLibrary.splice(i, 1);
+                }
+            }
+        }
         //refresh contents
+        refresh_contents();
     }
 });
 
@@ -134,9 +146,12 @@ add_book_form.addEventListener('submit', (event) => {
         js_form_data['book-have-read']
     );
 
-    
-
-    console.log(book_to_add);
+    //add object to list
+    MyLibrary.push(book_to_add);
+    //update content
+    refresh_contents();
+    //close dialog
+    add_book_dialog.close();
 });
 
 //cancel add book dialog, button
