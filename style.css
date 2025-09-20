@@ -60,7 +60,27 @@ body{
     padding-right: 20px;
 }
 
-#have-read{
-    display: flex;
-    gap: 10px;
+#add-book-dialog-content{
+    border-radius: 20px;
+    display: grid;
+}
+
+::backdrop{
+    background-image: linear-gradient(to bottom, black, white);
+}
+
+.add-book-input-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    row-gap: 50px;
+}
+
+.add-book-input{
+    border: 2px solid lightblue;
+    border-radius: 10px;
+}
+
+#book-have-read{
+    height: 25px;
 }

@@ -1,6 +1,8 @@
 const MyLibrary = [];
 let Contents = document.getElementById('contents');
 
+const add_book_dialog = document.getElementById('add-book-dialog');
+
 function clear_contents(){
     Contents.replaceChildren();
 }
@@ -103,11 +105,25 @@ Contents.addEventListener('click', (event) => {
     }
 });
 
-//add book button listener
+//add book button listener (open add book dialog)
 const add_book_button = document.getElementById('add-book-button');
 add_book_button.addEventListener('click', () => {
-    //open dialog with a form to enter book details
+    add_book_dialog.showModal();
 })
+
+//submit add book dialog button
+const submit_add_book_button = document.getElementById('submit-new-book');
+submit_add_book_button.addEventListener('click', () => {
+    //get contents of inputs
+    //add new book to list
+    //refresh contents
+});
+
+//cancel add book dialog, button
+const cancel_add_book_button = document.getElementById('cancel-add-book-button');
+cancel_add_book_button.addEventListener('click', () => {
+    add_book_dialog.close();
+});
 
 add_book('title1', 'author1', 20, true);
 add_book('title2', 'author2', 20, false);
