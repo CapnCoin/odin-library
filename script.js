@@ -134,6 +134,8 @@ add_book_form.addEventListener('submit', (event) => {
         js_form_data['book-have-read']
     );
 
+    
+
     console.log(book_to_add);
 });
 
