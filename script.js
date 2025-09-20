@@ -82,7 +82,7 @@ function add_book(title, author, n_pages, have_read){
     refresh_contents();
 }
 
-//event listeners
+//checkbox (book card) listener
 Contents.addEventListener('change', (event) => {
     if(event.target.classList.contains('have-read-checkbox')){
         const checkbox = event.target;
@@ -95,11 +95,18 @@ Contents.addEventListener('change', (event) => {
     }
 });
 
+//remove book (book card) button
 Contents.addEventListener('click', (event) => {
     if(event.target.classList.contains('remove-button')){
         //remove target (somehow by using the id)
         //refresh contents
     }
+});
+
+//add book button listener
+const add_book_button = document.getElementById('add-book-button');
+add_book_button.addEventListener('click', () => {
+    //open dialog with a form to enter book details
 })
 
 add_book('title1', 'author1', 20, true);
