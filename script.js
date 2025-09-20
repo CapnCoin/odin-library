@@ -11,6 +11,7 @@ function add_contents(){
     for(let i = 0; i < MyLibrary.length; i++){
         //create card
         let new_book = document.createElement('div');
+        new_book.dataset.id = MyLibrary[i].id;
 
         //assign and class
         new_book.classList.add('book-card');
@@ -109,14 +110,31 @@ Contents.addEventListener('click', (event) => {
 const add_book_button = document.getElementById('add-book-button');
 add_book_button.addEventListener('click', () => {
     add_book_dialog.showModal();
-})
+});
 
 //submit add book dialog button
-const submit_add_book_button = document.getElementById('submit-new-book');
-submit_add_book_button.addEventListener('click', () => {
-    //get contents of inputs
-    //add new book to list
-    //refresh contents
+const add_book_form = document.getElementById('add-book-dialog-form');
+add_book_form.addEventListener('submit', (event) => {
+    //prevent default form submission, which causes a page reload
+    event.preventDefault();
+
+    //form data object
+    const form_data = new FormData(event.target);
+    //convert to plain js object
+    const js_form_data = Object.fromEntries(form_data.entries());
+    //add checkbox value
+    const add_book_have_read = document.getElementById('book-have-read');
+    js_form_data['book-have-read'] = add_book_have_read.checked;
+
+    //create object to add to list
+    const book_to_add = new Book(
+        js_form_data['book-title'],
+        js_form_data['book-author'],
+        js_form_data['book-npages'],
+        js_form_data['book-have-read']
+    );
+
+    console.log(book_to_add);
 });
 
 //cancel add book dialog, button
