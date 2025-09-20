@@ -33,7 +33,7 @@ function add_contents(){
 
         //add have read
         let have_read_div = document.createElement('div');
-        have_read_div.id = 'have-read';
+        have_read_div.classList.add('have-read-div');
 
         let have_read_text = document.createElement('div');
         have_read_text.textContent = 'Have read'
@@ -89,12 +89,7 @@ function add_book(title, author, n_pages, have_read){
 Contents.addEventListener('change', (event) => {
     if(event.target.classList.contains('have-read-checkbox')){
         const checkbox = event.target;
-        if(checkbox.checked){
-            //update object variable
-        }
-        else{
-            //update object variable
-        }
+        //update object variable
     }
 });
 
