@@ -77,6 +77,10 @@ function Book(title, author, n_pages, have_read){
     this.info = function(){
         return `title: ${this.title}, author: ${this.author}, n_pages: ${this.n_pages}, have_read: ${this.have_read}, id: ${this.id}`;
     }
+
+    this.toggle_have_read = function(){
+        this.have_read = !this.have_read;
+    }
 }
 
 function add_book(title, author, n_pages, have_read){
@@ -88,8 +92,19 @@ function add_book(title, author, n_pages, have_read){
 //checkbox (book card) listener
 Contents.addEventListener('change', (event) => {
     if(event.target.classList.contains('have-read-checkbox')){
-        const checkbox = event.target;
         //update object variable
+        const book_card = event.target.closest('.book-card');
+        console.log(book_card)
+
+        if(book_card){
+            const book_card_id = book_card.dataset.id;
+            for(let i = 0; i < MyLibrary.length; i++){
+                if(book_card_id === MyLibrary[i].id){
+                    MyLibrary[i].toggle_have_read();
+                    break;
+                }
+            }
+        }
     }
 });
 
@@ -105,6 +120,7 @@ Contents.addEventListener('click', (event) => {
             for(let i = 0; i < MyLibrary.length; i++){
                 if(book_id === MyLibrary[i].id){
                     MyLibrary.splice(i, 1);
+                    break;
                 }
             }
         }
@@ -155,6 +171,6 @@ cancel_add_book_button.addEventListener('click', () => {
     add_book_dialog.close();
 });
 
-add_book('title1', 'author1', 20, true);
-add_book('title2', 'author2', 20, false);
-add_book('title3', 'author3', 20, true);
+add_book('Harry Potter', 'JK Rowling', 700, true);
+add_book('The color of magic', 'Terry Pratchet', 300, false);
+add_book('Mort', 'Terry Pratchet', 350, true);
